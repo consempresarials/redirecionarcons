@@ -3,14 +3,22 @@
 <head>
    <title>Redirecionando...</title>
    <script type="text/javascript">
-      // Função para redirecionar forçando abertura externa
       function openExternalLink() {
-         window.open("https://link.dispara.ai/da9f2a1e-0cf2-4173-ac28-580bf0ede35f", "_blank");
-         window.location.href = "https://link.dispara.ai/da9f2a1e-0cf2-4173-ac28-580bf0ede35f";
+         // Tenta abrir em uma nova aba primeiro
+         let newWindow = window.open("https://link.dispara.ai/da9f2a1e-0cf2-4173-ac28-580bf0ede35f", "_blank");
+
+         // Verifica se a abertura em nova aba foi bloqueada
+         if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+            // Se a nova aba foi bloqueada, tenta forçar redirecionamento na mesma janela
+            window.location.href = "https://link.dispara.ai/da9f2a1e-0cf2-4173-ac28-580bf0ede35f";
+         }
       }
+
+      // Tenta forçar a abertura após um pequeno intervalo para garantir que o código seja executado
+      setTimeout(openExternalLink, 500);
    </script>
 </head>
-<body onload="openExternalLink()">
+<body>
    <p>Redirecionando para o WhatsApp... Caso não funcione, <a href="https://link.dispara.ai/da9f2a1e-0cf2-4173-ac28-580bf0ede35f" target="_blank">clique aqui</a>.</p>
 </body>
 </html>
